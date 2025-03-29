@@ -2,11 +2,13 @@
 
 Pasos para levantar la app en desarrollo
 
-1. Levantar el proyecto
+1. Levantar la base de datos
 
 ```
 docker compose up -d
 ```
+
+2. Ejecutar el seed para [crear la base de datos local](http://localhost:3000/api/seed)
 
 # Prisma commands
 
