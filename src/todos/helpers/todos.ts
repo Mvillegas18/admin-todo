@@ -8,7 +8,20 @@ export const updateTodo = async (id: string, completed: boolean) => {
 			'Content-type': 'application/json',
 		},
 	}).then((resp) => resp.json());
-	console.log({ todo });
+
+	return todo;
+};
+
+export const createTodo = async (description: string) => {
+	const body = { description };
+
+	const todo = await fetch(`/api/todos`, {
+		method: 'POST',
+		body: JSON.stringify(body),
+		headers: {
+			'Content-type': 'application/json',
+		},
+	}).then((resp) => resp.json());
 
 	return todo;
 };
