@@ -1,6 +1,5 @@
 import prisma from '@/lib/prisma';
 import { Todo } from '@prisma/client';
-import { Segment } from 'next/dist/server/app-render/types';
 import { NextResponse } from 'next/server';
 import { boolean, object, string } from 'yup';
 
@@ -37,8 +36,8 @@ const putSchema = object({
 	description: string().optional(),
 });
 
-export async function PUT(request: Request, { params }: Segment) {
-	const { id } = params;
+export async function PUT(request: Request, context: any) {
+	const { id } = await context.params;
 	const todo = await getTodo(id);
 
 	if (!todo)
@@ -53,7 +52,7 @@ export async function PUT(request: Request, { params }: Segment) {
 		);
 
 		const updatedTodo = await prisma.todo.update({
-			where: { id: params.id },
+			where: { id: id },
 			data: { completed, description },
 		});
 
