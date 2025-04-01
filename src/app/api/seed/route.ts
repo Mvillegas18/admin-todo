@@ -7,31 +7,31 @@ export async function GET(request: Request): Promise<Response> {
 	await prisma.todo.createMany({
 		data: [
 			{
-				description: 'Todo 1',
+				description: 'Piedra del alma',
 				completed: true,
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
 			{
-				description: 'Todo 2',
+				description: 'Piedra del infinito',
 				completed: false,
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
 			{
-				description: 'Todo 3',
+				description: 'Piedra del tiempo',
 				completed: false,
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
 			{
-				description: 'Todo 4',
+				description: 'Piedra del espacio',
 				completed: false,
 				createdAt: new Date(),
 				updatedAt: new Date(),
 			},
 			{
-				description: 'Todo 5',
+				description: 'Piedra de la realidad',
 				completed: false,
 				createdAt: new Date(),
 				updatedAt: new Date(),
