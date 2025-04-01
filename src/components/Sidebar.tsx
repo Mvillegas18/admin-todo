@@ -1,7 +1,38 @@
-import { SidebarItem } from '@/components/SidebarItem';
+import { SidebarItem, SidebarProps } from '@/components/SidebarItem';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CiLogout } from 'react-icons/ci';
+import { CiBookmarkCheck, CiLogout } from 'react-icons/ci';
+import {
+	IoCalendar,
+	IoCalendarOutline,
+	IoCheckboxOutline,
+	IoListOutline,
+} from 'react-icons/io5';
+
+interface MenuItemProps extends SidebarProps {
+	id: number;
+}
+
+const menuItem: MenuItemProps[] = [
+	{
+		id: 1,
+		icon: <IoCalendarOutline />,
+		title: 'Dashboard',
+		path: '/dashboard',
+	},
+	{
+		id: 2,
+		icon: <IoCheckboxOutline />,
+		title: 'Rest TODOS',
+		path: '/dashboard/rest-todos',
+	},
+	{
+		id: 3,
+		icon: <IoListOutline />,
+		title: 'Server Actions',
+		path: '/dashboard/server-todos',
+	},
+];
 
 export function Sidebar() {
 	return (
@@ -34,7 +65,14 @@ export function Sidebar() {
 				</div>
 
 				<ul className="space-y-2 tracking-wide mt-8">
-					<SidebarItem />
+					{menuItem.map(({ title, path, icon, id }) => (
+						<SidebarItem
+							title={title}
+							icon={icon}
+							path={path}
+							key={id}
+						/>
+					))}
 				</ul>
 			</div>
 
