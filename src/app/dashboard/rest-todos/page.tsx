@@ -1,9 +1,20 @@
-import WidgetItem from '@/components/WidgetItem';
+import prisma from '@/lib/prisma';
+import { TodosGrid } from '@/todos/components/TodosGrid';
+import { Metadata } from 'next';
 
-export default function RestTodosPage() {
+export const metadata: Metadata = {
+	title: 'List of todos',
+	description: 'SEO list of todos',
+};
+
+export default async function RestTodosPage() {
+	const todos = await prisma.todo.findMany({
+		orderBy: { description: 'asc' },
+	});
+
 	return (
-		<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-			<WidgetItem />
+		<div>
+			<TodosGrid todos={todos} />
 		</div>
 	);
 }
