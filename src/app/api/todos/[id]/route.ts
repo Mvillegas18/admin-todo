@@ -52,8 +52,8 @@ export async function PUT(request: Request, { params }: Segment) {
 			await request.json()
 		);
 
-		const updatedTodo = prisma.todo.update({
-			where: { id },
+		const updatedTodo = await prisma.todo.update({
+			where: { id: params.id },
 			data: { completed, description },
 		});
 
