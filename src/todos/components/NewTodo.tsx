@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { IoTrashOutline } from 'react-icons/io5';
-import { createTodo } from '../helpers/todos';
+import { createTodo, deleteTodosCompleted } from '../helpers/todos';
 
 export const NewTodo = () => {
 	const [description, setDescription] = useState('');
@@ -15,6 +15,11 @@ export const NewTodo = () => {
 
 		createTodo(description);
 		setDescription('');
+		router.refresh();
+	};
+
+	const deleteCompleted = async () => {
+		deleteTodosCompleted();
 		router.refresh();
 	};
 
@@ -38,7 +43,7 @@ export const NewTodo = () => {
 			<span className="flex flex-1"></span>
 
 			<button
-				//TODO: onClick={ () => deleteCompleted() }
+				onClick={deleteCompleted}
 				type="button"
 				className="mr-5 flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all"
 			>
