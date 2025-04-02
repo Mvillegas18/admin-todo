@@ -25,3 +25,14 @@ export const createTodo = async (description: string) => {
 
 	return todo;
 };
+
+export const deleteTodosCompleted = async (): Promise<boolean> => {
+	const todosEliminated = await fetch('/api/todos', {
+		method: 'DELETE',
+		headers: {
+			'Content-type': 'application/json',
+		},
+	}).then((resp) => resp.json());
+
+	return true;
+};
