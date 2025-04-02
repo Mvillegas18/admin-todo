@@ -50,8 +50,13 @@ export async function POST(request: Request): Promise<Response> {
 	}
 }
 
-export async function DELETE(request: Request): Promise<Response> {
-	const todo = await prisma.todo.deleteMany({ where: { completed: true } });
-
-	return NextResponse.json({ message: 'Todos completados eliminados' });
+export async function DELETE(request: Request) {
+	try {
+		await prisma.todo.deleteMany({
+			where: { completed: true },
+		});
+		return NextResponse.json({ message: 'Todos completados eliminados' });
+	} catch (error) {
+		NextResponse.json({ error });
+	}
 }
