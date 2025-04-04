@@ -30,7 +30,7 @@ const menuItem: MenuItemProps[] = [
 		id: 3,
 		icon: <IoListOutline />,
 		title: 'Server Actions',
-		path: '/dashboard/server-todos',
+		path: '/dashboard/server-actions',
 	},
 ];
 
