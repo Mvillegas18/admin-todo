@@ -4,6 +4,7 @@ import { addProductToCart } from '@/shoping-cart/actions/action';
 import Image from 'next/image';
 import { IoAddCircleOutline, IoTrashOutline } from 'react-icons/io5';
 import { Star } from './Star';
+import { useRouter } from 'next/navigation';
 
 interface Props {
 	id: string;
@@ -14,9 +15,12 @@ interface Props {
 }
 
 export const ProductCard = ({ id, image, name, price, rating }: Props) => {
+	const router = useRouter();
+
 	const onAddToCart = () => {
 		// Add product to cart logic here
 		addProductToCart(id);
+		router.refresh(); // Refresh the page to see the updated cart
 	};
 	return (
 		<div className="bg-white shadow rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-100">
