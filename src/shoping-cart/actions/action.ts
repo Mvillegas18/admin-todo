@@ -21,3 +21,13 @@ export const addProductToCart = (id: string) => {
 
 	setCookie('cart', JSON.stringify(cookieCart));
 };
+
+export const deleteProductFromCart = (id: string) => {
+	const cookieCart = getCookieCart();
+
+	if (cookieCart[id]) {
+		delete cookieCart[id];
+	}
+
+	setCookie('cart', JSON.stringify(cookieCart));
+};
