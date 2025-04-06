@@ -1,10 +1,13 @@
 'use client';
 
-import { addProductToCart } from '@/shoping-cart/actions/action';
+import {
+	addProductToCart,
+	deleteProductFromCart,
+} from '@/shoping-cart/actions/action';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { IoAddCircleOutline, IoTrashOutline } from 'react-icons/io5';
 import { Star } from './Star';
-import { useRouter } from 'next/navigation';
 
 interface Props {
 	id: string;
@@ -20,6 +23,12 @@ export const ProductCard = ({ id, image, name, price, rating }: Props) => {
 	const onAddToCart = () => {
 		// Add product to cart logic here
 		addProductToCart(id);
+		router.refresh(); // Refresh the page to see the updated cart
+	};
+
+	const onDeleteFromCart = () => {
+		// Delete product from cart logic here
+		deleteProductFromCart(id);
 		router.refresh(); // Refresh the page to see the updated cart
 	};
 	return (
@@ -60,7 +69,7 @@ export const ProductCard = ({ id, image, name, price, rating }: Props) => {
 				{/* Price and Add to Cart */}
 				<div className="flex items-center justify-between">
 					<span className="text-3xl font-bold text-gray-900 dark:text-white">
-						${price}
+						${price.toFixed(2)}
 					</span>
 
 					<div className="flex">
@@ -70,7 +79,10 @@ export const ProductCard = ({ id, image, name, price, rating }: Props) => {
 						>
 							<IoAddCircleOutline size={25} />
 						</button>
-						<button className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+						<button
+							onClick={onDeleteFromCart}
+							className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+						>
 							<IoTrashOutline size={20} />
 						</button>
 					</div>
