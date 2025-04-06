@@ -5,9 +5,11 @@ import { CiLogout } from 'react-icons/ci';
 import { FaCookie } from 'react-icons/fa';
 import {
 	IoCalendarOutline,
+	IoCartOutline,
 	IoCheckboxOutline,
 	IoListOutline,
 } from 'react-icons/io5';
+import { LiaCookieSolid } from 'react-icons/lia';
 
 interface MenuItemProps extends SidebarProps {
 	id: number;
@@ -34,9 +36,15 @@ const menuItem: MenuItemProps[] = [
 	},
 	{
 		id: 4,
-		icon: <FaCookie />,
+		icon: <LiaCookieSolid />,
 		title: 'Cookies',
 		path: '/dashboard/cookies',
+	},
+	{
+		id: 5,
+		icon: <IoCartOutline />,
+		title: 'Products Cokies',
+		path: '/dashboard/products',
 	},
 ];
 
