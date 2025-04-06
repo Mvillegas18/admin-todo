@@ -1,9 +1,9 @@
 import { SidebarItem, SidebarProps } from '@/components/SidebarItem';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CiBookmarkCheck, CiLogout } from 'react-icons/ci';
+import { CiLogout } from 'react-icons/ci';
+import { FaCookie } from 'react-icons/fa';
 import {
-	IoCalendar,
 	IoCalendarOutline,
 	IoCheckboxOutline,
 	IoListOutline,
@@ -31,6 +31,12 @@ const menuItem: MenuItemProps[] = [
 		icon: <IoListOutline />,
 		title: 'Server Actions',
 		path: '/dashboard/server-actions',
+	},
+	{
+		id: 4,
+		icon: <FaCookie />,
+		title: 'Cookies',
+		path: '/dashboard/cookies',
 	},
 ];
 
