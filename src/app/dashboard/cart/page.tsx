@@ -53,13 +53,19 @@ export default async function CartPage() {
 
 			<div className="flex flex-col sm:flex-row gap-2 w-full">
 				<div className="flex flex-col gap-2 w-full sm:w-8/12">
-					{productsInCart.map(({ product, cuantity }) => (
-						<ItemCart
-							key={product.id}
-							product={product}
-							quantity={cuantity}
-						/>
-					))}
+					{productsInCart.length <= 0 ? (
+						<h1 className="text-3xl text-center font-bold text-gray-500 flex items-center justify-center h-96 w-full">
+							No hay productos en el carrito
+						</h1>
+					) : (
+						productsInCart.map(({ product, cuantity }) => (
+							<ItemCart
+								key={product.id}
+								product={product}
+								quantity={cuantity}
+							/>
+						))
+					)}
 				</div>
 			</div>
 		</div>
