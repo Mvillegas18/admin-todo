@@ -1,3 +1,4 @@
+import WidgetItem from '@/components/WidgetItem';
 import { products, type Product } from '@/products/data/products';
 import { ItemCart } from '@/shoping-cart/components/ItemCart';
 import { Metadata } from 'next';
@@ -37,6 +38,10 @@ export default async function CartPage() {
 	};
 
 	const productsInCart = getProductsInCart(cart);
+	const totalToPay = productsInCart.reduce(
+		(prev, current) => current.product.price * current.cuantity + prev,
+		0
+	);
 
 	return (
 		<div className="flex flex-col gap-3">
@@ -66,6 +71,19 @@ export default async function CartPage() {
 							/>
 						))
 					)}
+				</div>
+
+				<div className="flex flex-col sm:w-4/12 w-full">
+					<WidgetItem title="Total a pagar">
+						<div className="mt-2 flex justify-center gap-4">
+							<h3 className="text-3xl font-bold text-gray-700">
+								${(totalToPay * 1.15).toFixed(2)}
+							</h3>
+						</div>
+						<span className="font-bold text-center text-gray-500">
+							Impuestos 15%: ${(totalToPay * 0.15).toFixed(2)}
+						</span>
+					</WidgetItem>
 				</div>
 			</div>
 		</div>
